@@ -1,0 +1,82 @@
+/* Wrapper */
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Edit button */
+.edit-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+/* Section title */
+.section-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+/* Table */
+.details-table {
+  border-top: 1px solid #e5e7eb;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.value {
+  font-weight: 500;
+  color: #111827;
+}
+
+.link {
+  color: #2563eb;
+}
+
+/* Title for regulatory */
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}

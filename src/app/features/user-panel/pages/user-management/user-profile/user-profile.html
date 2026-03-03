@@ -1,0 +1,21 @@
+<div class="p-4">
+  <!-- PAGE TITLE -->
+  <h2 class="text-xl font-semibold mb-4">User Profile</h2>
+
+  <!-- GRID LAYOUT -->
+  <div class="grid grid-cols-12 gap-6">
+    <!-- ================= LEFT SIDE ================= -->
+    <div class="col-span-12 lg:col-span-4 space-y-6">
+      <app-profile-section [user]="user" (resetPassword)="onResetPassword()"></app-profile-section>
+
+      <app-commission-section (saveCommission)="onSaveCommission($event)"></app-commission-section>
+    </div>
+
+    <!-- ================= RIGHT SIDE ================= -->
+    <div class="col-span-12 lg:col-span-8 space-y-6 mt-4">
+      <app-user-details></app-user-details>
+
+      <app-documents-section (addDocument)="onAddDocument()"></app-documents-section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="space-y-6">
+
+  <!-- ================= PROFILE CARD ================= -->
+  <div class="bg-white rounded-xl shadow overflow-hidden ">
+
+    <!-- Banner -->
+    <div class="h-28 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+
+    <!-- Profile Info -->
+    <div class="p-4 relative">
+
+      <!-- Avatar -->
+      <div
+        class="w-20 h-20 rounded-full bg-gray-200 border-4 border-white absolute -top-10 flex items-center justify-center overflow-hidden"
+      >
+        <img
+          *ngIf="user?.avatar"
+          [src]="user.avatar"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="mt-12 flex justify-between items-center">
+
+        <!-- Name + Role -->
+        <div>
+          <h3 class="text-lg font-semibold">
+            {{ user?.name || 'User Name' }}
+          </h3>
+
+          <p class="text-sm text-gray-500">
+            {{ user?.role || 'Role' }}
+          </p>
+        </div>
+
+        <!-- Status -->
+        <div
+          class="px-3 py-1 rounded-full text-sm"
+          [ngClass]="{
+            'bg-green-100 text-green-700': user?.status === 'Active',
+            'bg-red-100 text-red-600': user?.status !== 'Active'
+          }"
+        >
+          {{ user?.status || 'Inactive' }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ONBOARDING REVIEW CARD ================= -->
+  <div class="bg-white rounded-xl shadow p-5">
+
+    <h3 class="text-lg font-semibold mb-4">
+      Onboarding Review
+    </h3>
+
+    <!-- STATUS + SANCTION -->
+    <div class="flex justify-between items-center mb-4">
+
+      <!-- Status -->
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-600">Status :</span>
+
+        <span
+          class="px-3 py-1 text-sm rounded-md border"
+          [ngClass]="{
+            'bg-blue-50 text-blue-600 border-blue-200': onboardingData?.status === 'In Review',
+            'bg-green-50 text-green-600 border-green-200': onboardingData?.status === 'Approved',
+            'bg-red-50 text-red-600 border-red-200': onboardingData?.status === 'Rejected'
+          }"
+        >
+          {{ onboardingData?.status || 'Pending' }}
+        </span>
+      </div>
+
+      <!-- Sanction Status -->
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-600">Sanction Status</span>
+
+        <div
+          class="w-10 h-5 rounded-full relative transition"
+          [ngClass]="{
+            'bg-red-500': onboardingData?.sanctionMatch,
+            'bg-gray-300': !onboardingData?.sanctionMatch
+          }"
+        >
+          <div
+            class="w-4 h-4 bg-white rounded-full absolute top-0.5 transition"
+            [ngClass]="{
+              'right-0.5': onboardingData?.sanctionMatch,
+              'left-0.5': !onboardingData?.sanctionMatch
+            }"
+          ></div>
+        </div>
+
+        <span
+          class="text-sm font-medium"
+          [ngClass]="{
+            'text-red-600': onboardingData?.sanctionMatch,
+            'text-gray-500': !onboardingData?.sanctionMatch
+          }"
+        >
+          {{ onboardingData?.sanctionMatch ? 'Match' : 'No Match' }}
+        </span>
+      </div>
+
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="mb-4">
+
+      <div class="text-sm mb-1">
+        {{ onboardingData?.progress || 0 }}%
+      </div>
+
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div
+          class="bg-green-600 h-2 rounded-full transition-all"
+          [style.width.%]="onboardingData?.progress"
+        ></div>
+      </div>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="flex items-center gap-3">
+
+      <button
+        class="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800"
+      >
+        View Application
+      </button>
+
+      <button
+        class="bg-gray-200 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed"
+        disabled
+      >
+        View Agreement
+      </button>
+
+    </div>
+
+    <!-- Pending -->
+    <div class="mt-2 text-sm text-yellow-600 flex items-center gap-1">
+      ⚠ Pending
+    </div>
+
+  </div>
+
+  <!-- ================= RESET PASSWORD CARD ================= -->
+  <div class="bg-white rounded-xl shadow p-4">
+
+    <div class="flex justify-between items-center mb-4">
+      <h4 class="font-semibold">Send Reset Password Link</h4>
+
+      <span class="text-xs text-gray-500">
+        Last Updated
+      </span>
+    </div>
+
+    <button
+      (click)="onResetClick()"
+      class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+    >
+      Reset Password
+    </button>
+
+  </div>
+
+  <!-- ================= APPLICATIONS CARD ================= -->
+  <div class="bg-white rounded-xl shadow p-4 mb-4">
+
+    <h4 class="font-semibold mb-2">
+      Applications Initiated
+    </h4>
+
+    <div class="flex justify-between items-center mb-4">
+      <span class="text-gray-500 text-sm">Total Users</span>
+      <span class="text-2xl font-bold">
+        {{ user?.applications || 0 }}
+      </span>
+    </div>
+
+    <button
+      class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+    >
+      View
+    </button>
+
+  </div>
+
+</div>

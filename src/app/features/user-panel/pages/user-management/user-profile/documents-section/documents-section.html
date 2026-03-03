@@ -1,0 +1,116 @@
+<div class="bg-white rounded-xl shadow p-5 mt-5">
+
+  <!-- ================= TABS ================= -->
+  <div class="tabs flex gap-6 border-b mb-5">
+    <div
+      class="tab"
+      [class.active]="activeTab === 'documents'"
+      (click)="setTab('documents')"
+    >
+      Documents
+    </div>
+
+    <div
+      class="tab"
+      [class.active]="activeTab === 'cpd'"
+      (click)="setTab('cpd')"
+    >
+      CPDs
+    </div>
+
+    <div
+      class="tab"
+      [class.active]="activeTab === 'exam'"
+      (click)="setTab('exam')"
+    >
+      Financial exam
+    </div>
+  </div>
+
+  <!-- ================= DOCUMENTS TAB ================= -->
+  <div *ngIf="activeTab === 'documents'" class="card">
+
+    <!-- header -->
+    <div class="card-header">
+      <h3>Uploaded Documents</h3>
+
+      <button class="add-btn" (click)="showUploadDialog = true">
+        + Add Document
+      </button>
+    </div>
+
+    <!-- table -->
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>File name</th>
+          <th>Category</th>
+          <th style="width:120px">Action</th>
+        </tr>
+      </thead>
+
+      <tbody *ngIf="documents.length > 0">
+        <tr *ngFor="let doc of documents">
+          <td>{{ doc.fileName }}</td>
+          <td>{{ doc.category }}</td>
+          <td>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- empty state -->
+    <div *ngIf="documents.length === 0" class="empty">
+      <div class="empty-icon">📁</div>
+      <p>No documents uploaded</p>
+    </div>
+
+  </div>
+
+  <!-- ================= UPLOAD DIALOG ================= -->
+  <div *ngIf="showUploadDialog" class="dialog-backdrop">
+
+    <div class="dialog">
+
+      <div class="dialog-header">
+        <h3>Upload Document</h3>
+        <span class="close" (click)="showUploadDialog = false">✕</span>
+      </div>
+
+      <!-- category -->
+      <label>Category</label>
+      <select [(ngModel)]="selectedCategory" class="dropdown">
+        <option [ngValue]="null">Select category</option>
+        <option *ngFor="let c of categories" [ngValue]="c">
+          {{ c.label }}
+        </option>
+      </select>
+
+      <!-- upload area -->
+      <div
+        class="upload-area"
+        [class.hovered]="hovered"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+      >
+        <input type="file" (change)="onFileSelect($event)" />
+
+        <p *ngIf="!selectedFile">
+          Drag & drop file here or click to upload
+        </p>
+
+        <p *ngIf="selectedFile" class="file-name">
+          {{ selectedFile.name }}
+        </p>
+      </div>
+
+      <button class="upload-btn" (click)="uploadDocument()">
+        Upload
+      </button>
+
+    </div>
+  </div>
+
+</div>

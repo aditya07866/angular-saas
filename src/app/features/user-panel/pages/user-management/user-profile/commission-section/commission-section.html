@@ -1,0 +1,123 @@
+<div class="space-y-6">
+  <div class="bg-white rounded-xl shadow p-6 mt-4">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <h2 class="text-xl font-semibold text-gray-800">
+        Commission Percentages
+      </h2>
+
+      <button
+        class=" bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition px-4 py-2 rounded-lg text-sm"
+        (click)="toggleEdit()"
+      >
+        {{ editMode ? 'Cancel' : 'Edit' }}
+      </button>
+    </div>
+
+    <!-- Info Text -->
+    <p class="mt-3 mb-6 text-sm text-gray-500">
+      The 100% commission shown here is provisional. It will be divided among
+      applicable roles once role-based commission percentages are finalized.
+    </p>
+
+    <form [formGroup]="commissionForm" class="space-y-6">
+
+      <!-- User Share -->
+      <div class="flex justify-between items-center">
+        <div>
+          <div class="font-medium text-gray-800">User Share</div>
+          <div class="text-sm text-gray-500">CAS Broker</div>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-gray-600">
+            Approx. <span class="text-red-500">*</span>
+          </label>
+
+          <div class="flex items-center border border-gray-300 rounded-lg px-3 py-1.5 w-28">
+            <input
+              type="number"
+              formControlName="brokerShare"
+              class="w-full outline-none text-sm"
+              [disabled]="!editMode"
+            />
+            <span class="text-indigo-600 font-semibold text-sm">%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200"></div>
+
+      <!-- Manager Share -->
+      <div class="flex justify-between items-center">
+        <div>
+          <div class="font-medium text-gray-800">
+            Reporting Manager Share
+          </div>
+          <div class="text-sm text-gray-500">
+            Sakshi Dutta
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-gray-600">
+            Percentage <span class="text-red-500">*</span>
+          </label>
+
+          <div class="flex items-center border border-gray-300 rounded-lg px-3 py-1.5 w-28">
+            <input
+              type="number"
+              formControlName="managerShare"
+              class="w-full outline-none text-sm"
+              [disabled]="!editMode"
+            />
+            <span class="text-blue-600 font-semibold text-sm">%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200"></div>
+
+      <!-- Company Share -->
+      <div class="flex justify-between items-center">
+        <div>
+          <div class="font-medium text-gray-800">
+            Company Share <span class="text-red-500">*</span>
+          </div>
+          <div class="text-sm text-gray-500">
+            Wealthmax Financial Advisers
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-gray-600">
+            Percentage <span class="text-red-500">*</span>
+          </label>
+
+          <div class="flex items-center border border-gray-300 rounded-lg px-3 py-1.5 w-28">
+            <input
+              type="number"
+              formControlName="companyShare"
+              class="w-full outline-none text-sm"
+              [disabled]="!editMode"
+            />
+            <span class="text-blue-600 font-semibold text-sm">%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div *ngIf="editMode" class="pt-4">
+        <button
+          type="button"
+          (click)="save()"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition"
+        >
+          Save Changes
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

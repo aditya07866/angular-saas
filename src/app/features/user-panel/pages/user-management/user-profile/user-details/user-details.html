@@ -1,0 +1,94 @@
+<!-- Wrapper -->
+<div class="details-wrapper">
+  <div class="card-header">
+      <h3>Personal Information</h3>
+      <button class="edit-btn">Edit</button>
+    </div>
+  <!-- ================= PERSONAL INFORMATION ================= -->
+  <div class="card">
+    
+
+    <div class="section-title">User Details</div>
+
+    <div class="details-table">
+      <div class="row">
+        <span class="label">Full Name:</span>
+        <span class="value">{{ personalInfo?.fullName }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">User ID:</span>
+        <span class="value">{{ personalInfo?.userId }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Role:</span>
+        <span class="value">{{ personalInfo?.role }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Mobile Number:</span>
+        <span class="value">{{ personalInfo?.mobile }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Telephone number:</span>
+        <span class="value">{{ personalInfo?.telephone }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Email:</span>
+        <span class="value link">{{ personalInfo?.email }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Date of birth:</span>
+        <span class="value">{{ personalInfo?.dob }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Company:</span>
+        <span class="value">{{ personalInfo?.company }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Reporting Manager:</span>
+        <span class="value">{{ personalInfo?.reportingManager }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= REGULATORY DETAILS ================= -->
+  <div class="card">
+    <h3 class="card-title">Regulatory Details</h3>
+
+    <div class="details-table">
+      <div class="row">
+        <span class="label">Postcode:</span>
+        <span class="value">{{ regulatoryData?.postcode }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Address:</span>
+        <span class="value">{{ regulatoryData?.address }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Bank Name:</span>
+        <span class="value">{{ regulatoryData?.bankName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Account Number:</span>
+        <span class="value">{{ regulatoryData?.accountNumber }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Sort Code:</span>
+        <span class="value">{{ regulatoryData?.sortCode }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Bank Address:</span>
+        <span class="value">{{ regulatoryData?.bankAddress }}</span>
+      </div>
+    </div>
+  </div>
+</div>
